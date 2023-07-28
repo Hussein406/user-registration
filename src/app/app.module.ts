@@ -16,6 +16,9 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegistrationPageComponent } from './registration-page/registration-page.component';
+import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
+import { ProfilePageComponent } from './profile-page/profile-page.component';
 
 @NgModule({
   declarations: [
@@ -23,13 +26,15 @@ import { RegistrationPageComponent } from './registration-page/registration-page
     RegistrationPageComponent,
     NavbarComponent,
     LoginPageComponent,
+    ProfilePageComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-
+    HttpClientModule,
+    CommonModule,
     MatToolbarModule,
     MatIconModule,
     MatCardModule,
