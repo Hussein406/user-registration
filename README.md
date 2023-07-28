@@ -1,5 +1,12 @@
 # UserRegistrationApp
 
+
+
+## Introduction 
+
+This user-friendly web app, built with Angular and Angular Material components, allows users to register using a simple form. After successful registration, users can view their profile page with personalized information. The app ensures security during navigation.
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.0.
 
 ## Development server
