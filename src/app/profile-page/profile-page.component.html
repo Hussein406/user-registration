@@ -1,1 +1,6 @@
-<p>profile-page works!</p>
+<div *ngIf="userProfile" class="profile-container">
+  <img [src]="userProfile.img" alt="Profile Image" class="profile-image" />
+  <h2 class="profile-name">{{ userProfile.name }}</h2>
+  <p class="profile-email">{{ userProfile.email }}</p>
+  <p class="profile-bio">{{ userProfile.bio }}</p>
+</div>

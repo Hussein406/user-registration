@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ApiService } from '../api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registration-page',
@@ -8,9 +10,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class RegistrationPageComponent implements OnInit {
   registrationForm!: FormGroup;
-  hide = true;
+  registrationSuccess: boolean = false;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private apiService: ApiService,
+    private router: Router,
+  ) {}
 
   ngOnInit(): void {
     this.registrationForm = this.formBuilder.group({
@@ -23,7 +29,17 @@ export class RegistrationPageComponent implements OnInit {
 
   onSubmit() {
     if (this.registrationForm.valid) {
-      console.log('Form submitted:', this.registrationForm.value);
+      this.apiService.registerUser().subscribe(
+        () => {
+          this.registrationSuccess = true;
+
+          this.router.navigate(['/profile']);
+        },
+        (error) => {
+          console.error('User Registration Failed: ', error);
+          this.registrationSuccess = false;
+        }
+      )
     }
   }
 }
