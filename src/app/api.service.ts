@@ -8,9 +8,12 @@ import { map } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class ApiService {
-  private registerUrl = 'https://mocki.io/v1/7f434df6-a4ac-4817-ab7c-dd39a564d01d';
+  private registerUrl =
+    'https://mocki.io/v1/7f434df6-a4ac-4817-ab7c-dd39a564d01d';
 
-  private formUrl = 'https://mocki.io/v1/611a3036-4420-48a5-b8da-9b461853cdd2'
+  private formUrl = 'https://mocki.io/v1/611a3036-4420-48a5-b8da-9b461853cdd2';
+
+  private isAuthenticated: boolean = false;
 
   constructor(private http: HttpClient) {}
 
@@ -24,9 +27,17 @@ export class ApiService {
 
   getUserProfile(): Observable<any> {
     return this.http.get(this.formUrl).pipe(
-      map ((res) => {
+      map((res) => {
         return res;
       })
-    )
+    );
+  }
+
+  setAuthenticatedStatus(status: boolean) {
+    this.isAuthenticated = status;
+  }
+
+  isAuthenticatedUser(): boolean {
+    return this.isAuthenticated;
   }
 }
